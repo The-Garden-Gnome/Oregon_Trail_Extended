@@ -6,7 +6,7 @@ class Wagon {
     }
 
     getAvailableSeatCount() {
-        let AvailableSeatCount = this.capacity -= this.passengers.length
+        let AvailableSeatCount = this.capacity - this.passengers.length
         return AvailableSeatCount
     }
 
@@ -15,14 +15,22 @@ class Wagon {
         //     this.passengers.push(Traveler)
         // }
 
-        if (this.passengers.length !== this.capacity) {
+        // else {
+        //     console.log ("No Room")
+        // }
+
+        // if (this.passengers.length <= this.capacity) {
+        //     this.passengers.push(Traveler)
+        // }
+
+        if(this.getAvailableSeatCount() > 0){
             this.passengers.push(Traveler)
         }
     }
 
     shouldQuarantine() {
         if (this.passengers.some(function (passenger) {
-            return passenger.isHealthy === true
+            return passenger.isHealthy === false
         })) {
             return true
         }
